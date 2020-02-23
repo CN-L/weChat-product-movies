@@ -3,7 +3,7 @@
 	<view>
 		<view class="movie-header">
 			<text class="slogan">{{sortTitle}}</text>
-			<view class="more">
+			<view catchtap="onMoreTap" class="more" data-sortTitle="{{sortTitle}}">
 				<text class="more-text">更多</text>
 				<image class="more-img" src="/imgs/movie/更多.png"></image>
 			</view>

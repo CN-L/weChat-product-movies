@@ -1,0 +1,6 @@
+@import '../movie/movie-template.wxss';
+.moreMovie {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

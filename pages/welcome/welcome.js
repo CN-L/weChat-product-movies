@@ -5,8 +5,6 @@ Page({
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
-      console.log('nice')
-      console.log(app.globalData.userInfo)
       wx.switchTab({
         url: '/pages/home/home',
       })
@@ -35,8 +33,6 @@ Page({
     // wx.redirectTo离开后不返回，触发了卸载页面。而navigateTo触发了页面隐藏
   },
   getUserInfo: function(e) {
-    console.log('rrr')
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     if(app.globalData.userInfo) {
       wx.switchTab({

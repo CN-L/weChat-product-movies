@@ -11,7 +11,14 @@ Page({
     comingSoon: {},
     top250: {}
   },
-
+  // template模板中的点击事件 在这可调用
+ onMoreTap: function(event) {
+   var sorttitle = event.currentTarget.dataset.sorttitle
+   wx.navigateTo({
+     url: '/pages/movies/more-movie/more-movie?sorttitle='+ sorttitle
+   })
+   console.log(event, 'onMoreTap')
+ },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -56,7 +63,6 @@ Page({
         average: subject.rating.average
       }
       movies.push(result) //数据
-      console.log(movies, '0000')
     }
     dataList[keySet] = {
       sortTitle: sortTitle,
