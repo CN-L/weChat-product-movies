@@ -1,4 +1,7 @@
 @import '../movie/movie-template.wxss';
+.seemore {
+  height: 1300rpx;
+}
 .moreMovie {
   display: flex;
   justify-content: space-around;

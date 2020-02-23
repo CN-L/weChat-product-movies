@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    totalCount: 0,
+    isEmpty: false,
+    movies: []
   },
 
   /**
@@ -30,10 +32,10 @@ Page({
         url += "/v2/movie/top250"
         break
     }
+    this.setData({
+      requestUrl: url
+    })
     utils.http(url, "GET", this.processDoubanData)
-  },
-  callBack: function(data) {
-   console.log(data, '222')
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -51,38 +53,44 @@ Page({
   onShow: function () {
     console.log('onShow')
   },
-
+  onScrollLower: function () {
+    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    utils.http(nextUrl, "GET", this.processDoubanData)
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
 
   },
-// 请求结果处理
-processDoubanData: function (movieList) {
-  console.log(movieList)
-  var movies = []
-  var dataList = {}
-  for(var idx in movieList.subjects) {
-    var subject = movieList.subjects[idx]
-    var title1 = subject.title
-    if(title1.length > 5) {
-      title1 = title1.substring(0, 5)  + '...'
+  // 请求结果处理
+  processDoubanData: function (movieList) {
+    var movies = []
+    // var dataList = {}
+    for (var idx in movieList.subjects) {
+      var subject = movieList.subjects[idx]
+      var title1 = subject.title
+      if (title1.length > 5) {
+        title1 = title1.substring(0, 5) + '...'
+      }
+      var result = {
+        title: title1,
+        images: subject.images.large,
+        movieId: subject.id,
+        stars: utils.startArry(subject.rating.stars),
+        average: subject.rating.average
+      }
+      movies.push(result) //数据
     }
-    var result = {
-      title: title1,
-      images: subject.images.large,
-      movieId: subject.id,
-      stars: utils.startArry(subject.rating.stars),
-      average: subject.rating.average
-    }
-    movies.push(result) //数据
-  }
-  // this.setData(dataList) //相当于平铺这个对象
-  this.setData({
-    movies: movies
-  })
-},
+    var totalMovies = this.data.movies
+    totalMovies = totalMovies.concat(movies)
+    let totalCount = this.data.totalCount
+    // this.setData(dataList) //相当于平铺这个对象
+    this.setData({
+      movies: totalMovies,
+      totalCount: totalCount + 20
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

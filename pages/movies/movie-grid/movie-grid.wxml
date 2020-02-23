@@ -1,14 +1,17 @@
 <import src="../movie/movie-template.wxml" />
 <template name="movie-grid-template">
-	<view class="moreMovie">
-		<block wx:for="{{movies}}" wx:key="index">
-			<view>
-				<template is="movieTemplate" data="{{...item}}"></template>
-			</view>
+<!-- 一定要加固定高度 -->
+	<scroll-view class="seemore" scroll-y="{{true}}" bindscrolltolower="onScrollLower">
+		<view class="moreMovie">
+			<block wx:for="{{movies}}" wx:key="index">
+				<view>
+					<template is="movieTemplate" data="{{...item}}"></template>
+				</view>
+			</block>
+		</view>
 
-		</block>
 
-	</view>
+	</scroll-view>
 
 
 
