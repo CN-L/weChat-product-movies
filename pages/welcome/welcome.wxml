@@ -1,0 +1,7 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="content">
+  <image class="user-img" src="/imgs/welcome.jpg"></image>
+  <text class="user-name">hello, 她来听我的演唱会</text>
+  <!-- bindtap会触发父元素点击事件 事件冒泡 catchtap阻止了事件向上冒泡-->
+  <button type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+</view>

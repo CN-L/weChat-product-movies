@@ -1,0 +1,19 @@
+<import src="../post-item/post-item-template.wxml" />
+<!-- @import "/pages/post-item/post-item-template.wxss" -->
+<view class="content">
+	<!-- vertical 横屏竖屏 false时需要用到{{}}包裹 不包裹那么非空字符转解析成true -->
+	<swiper vertical="{{false}}" indicator-dots="true" indicator-active-color="#E6A23C" autoplay="true" interval="3000" circular="true">
+		<swiper-item wx:for="{{imgList}}" wx:key="index">
+			<image catchtap="onPostDetail" src="{{item}}" data-postId="{{index+1}}"></image>
+		</swiper-item>
+	</swiper>
+	<!-- 新闻列表 循环-->
+	<!-- wx:for-item指定名称 wx:for-index 指定下标名称 -->
+	<view wx:for="{{post_key}}" wx:for-item="item" wx:key="idx" wx:for-index="idx">
+  <!-- data-postId自定义属性 -->
+		<view catchtap="onPostDetail" data-postId = "{{item.post_id}}">
+			<template is="newsData" data="{{item}}" />
+		</view>
+
+	</view>
+</view>

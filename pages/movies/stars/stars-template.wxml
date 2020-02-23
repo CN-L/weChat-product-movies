@@ -1,0 +1,11 @@
+<!--pages/movie/movie.wxml-->
+<template name="starsTemplate">
+	<view class="starsImg">
+		<block wx:for="{{stars}}" wx:key="index">
+			<image wx:if="{{item == 1}}" src="/imgs/movie/星星.png"></image>
+			<image wx:else src="/imgs/movie/星星1.png"></image>
+		</block>
+
+		<text class="rate">{{score}}</text>
+	</view>
+</template>

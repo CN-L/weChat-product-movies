@@ -1,0 +1,8 @@
+<import src="/pages/movies/stars/stars-template.wxml" /> <!--引入template模板 还需要在css引入样式-->
+<template name="movieTemplate">
+	<view class="movie-img">
+		<image class="movieImgBack" src="{{images}}"></image> <!-- 豆瓣电影的图片 -->
+    <text class="movieTextName">{{title}}</text>
+    <template is="starsTemplate" data="{{score: average, stars: stars}}"></template>
+	</view>
+</template>

@@ -1,0 +1,29 @@
+@import "/pages/movies/movie/movie-template.wxss";
+
+.movie-header {
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.more {
+  display: flex;
+  align-items: center;
+}
+.slogan {
+  display: block;
+  width: 70%;
+}
+.more-img {
+  width: 40rpx;
+  height: 40rpx
+}
+.more-text {
+  color: rgb(0, 26, 255);
+}
+.movieList {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}

@@ -1,0 +1,22 @@
+<!--pages/pst-detail/post-detail.wxml-->
+<view id="post-detail">
+	<image class="avator-img" src="{{detailForm.imgSrc}}"></image>
+	<image wx:if="{{isPlayStatus}}" catchtap="onMusicTap" class="music-img" src="../../imgs/music/close.jpg"></image>
+  <image wx:else catchtap="onMusicTap" class="music-img" src="../../imgs/music/start.jpg"></image>
+	<view class="post-date">
+		<image src="{{detailForm.avator}}"></image>
+		<text>胡歌</text>
+		<text>发表于</text>
+		<text>三天前</text>
+	</view>
+	<text class="title">{{detailForm.title}}</text>
+	<view class="icon-btn">
+		<view class="right-img">
+      <image catchtap="onShareTap" src="../../imgs/common-postDetails/share.jpg"></image>
+			<image wx:if="{{collect}}" catchtap="onCollectionTap" src="../../imgs/common-postDetails/conllent.jpg"></image>
+			<image wx:else catchtap="onCollectionTap" src="../../imgs/common-postDetails/noIc.jpg"></image>
+		</view>
+		<view class="content-line"></view>
+	</view>
+  <text>{{detailForm.content}}</text>
+</view>

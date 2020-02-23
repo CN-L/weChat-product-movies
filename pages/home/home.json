@@ -1,0 +1,9 @@
+{
+    "usingComponents": {},
+    "navigationBarBackgroundColor": "#E6A23C",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "首页-局部配置",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+}

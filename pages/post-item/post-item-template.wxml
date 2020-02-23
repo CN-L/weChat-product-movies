@@ -1,0 +1,16 @@
+<!-- 只能支持css和页面 不支持逻辑js的复用 compontent自定义组件可以复用 -->
+<template name="newsData">
+      <view class="content-header">
+        <image class="header-img"  src="{{item.avator}}"></image>
+        <text wx:if='{{item.text_status}}' class="header-txt">{{item.date}}</text>
+        <view class="header-title">{{item.title}}</view>
+      </view>
+      <image src="{{item.url}}" style="width: 100%;heght: 400rpx"></image>
+      <text>{{item.content}}</text>
+      <view class="footer">
+        <image class="footer-img" src="{{item.imgs.author_img}}"></image>
+        <text>1589</text>
+        <image class="footer-img" src="{{item.imgs.post_img}}"></image>
+        <text>129</text>
+      </view>
+</template>

@@ -1,0 +1,20 @@
+.header-img {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx;
+  vertical-align: middle
+}
+.header-txt {
+  vertical-align: middle
+}
+.header-title {
+  margin: 10rpx
+}
+.footer {
+  margin: 10rpx 0
+}
+.footer-img {
+  width: 40rpx;
+  margin: 0 10rpx;
+  height: 40rpx;
+}

@@ -1,0 +1,14 @@
+.starsImg {
+  display: flex;
+  width: 200rpx;
+  flex-direction: row;
+  align-items: center;
+}
+
+.starsImg image {
+  display: block;
+  text-align: center;
+  margin-right: 10rpx;
+  width: 20rpx;
+  height: 20rpx
+}

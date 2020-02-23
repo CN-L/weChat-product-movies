@@ -1,0 +1,12 @@
+@import "/pages/movies/stars/stars-template.wxss";
+.movie-img {
+  width: 200rpx;
+  height: 400rpx;
+}
+.movieImgBack {
+  width: 200rpx;
+  height: 270rpx;
+}
+.movieTextName {
+  display: block;
+}

@@ -1,0 +1,28 @@
+/* pages/welcome/welcome.wxss */
+page {
+ height: 100%;
+}
+.content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  background: yellow;
+  align-items: center
+}
+.user-img {
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 160rpx;
+}
+.user-name {
+  margin: 40rpx 0 100rpx 0;
+}
+.user-btn {
+  /* box-sizing: border-box; */
+  padding: 10rpx 20rpx;
+  border: solid 1rpx #ccc;
+  border-radius: 10rpx;
+  background: #67C23A;
+  color: #fff
+}

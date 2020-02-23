@@ -1,0 +1,53 @@
+/* pages/pst-detail/post-detail.wxss */
+#post-detail {
+  position: relative;
+}
+#post-detail .avator-img {
+  width:100%;
+  height: 400rpx;
+}
+.post-date {
+  display: flex;
+  align-items:center
+}
+.post-date image {
+  width: 100rpx;
+  height: 100rpx;
+  margin:0 10rpx
+}
+.post-date text:nth-child(2) {
+  margin: 0 10rpx
+}
+.title {
+  margin: 10rpx
+}
+.right-img image{
+  float: right;
+  height: 50rpx;
+  margin-right: 20rpx;
+  width: 50rpx;
+}
+.icon-btn {
+  position: relative;
+  height: 50rpx;
+}
+.content-line{
+  position: absolute;
+  top: 25rpx;
+  bottom:0;
+  right: 0;
+  left: 0;
+  height:1rpx;
+  background: pink;
+  width: 100%;
+}
+.music-img {
+  display: block;
+  opacity: 0.5;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 170rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
