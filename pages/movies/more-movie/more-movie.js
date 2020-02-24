@@ -56,6 +56,7 @@ Page({
   onScrollLower: function () {
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
     utils.http(nextUrl, "GET", this.processDoubanData)
+    wx.showNavigationBarLoading() //加载lading 在导航栏
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -90,6 +91,7 @@ Page({
       movies: totalMovies,
       totalCount: totalCount + 20
     })
+    wx.hideNavigationBarLoading()
   },
   /**
    * 生命周期函数--监听页面卸载
