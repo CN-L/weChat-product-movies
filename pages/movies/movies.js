@@ -8,20 +8,30 @@ Page({
    */
   data: {
     inTheaters: {},
+    movieName: '',
     comingSoon: {},
+    containerShow: true,
+    searBtnShow: false,
     top250: {}
   },
   // template模板中的点击事件 在这可调用
- onMoreTap: function(event) {
-   var sorttitle = event.currentTarget.dataset.sorttitle
-   wx.navigateTo({
-     url: '/pages/movies/more-movie/more-movie?sorttitle='+ sorttitle
-   })
-   console.log(event, 'onMoreTap')
- },
+  onMoreTap: function (event) {
+    var sorttitle = event.currentTarget.dataset.sorttitle
+    wx.navigateTo({
+      url: '/pages/movies/more-movie/more-movie?sorttitle=' + sorttitle
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
+
+  //  关闭搜索
+  closeSearch: function() {
+    this.setData({
+      containerShow: true,
+      searBtnShow: false
+    })
+  },
   onLoad: function (options) {
     var inTheaters = app.globalData.doubanBase + "/v2/movie/in_theaters?start=0&count=3"
     var comingSoonUrl = app.globalData.doubanBase + "/v2/movie/coming_soon?start=0&count=3"
@@ -49,11 +59,11 @@ Page({
     console.log(keySet)
     var movies = []
     var dataList = {}
-    for(var idx in movieList.subjects) {
+    for (var idx in movieList.subjects) {
       var subject = movieList.subjects[idx]
       var title1 = subject.title
-      if(title1.length > 5) {
-        title1 = title1.substring(0, 5)  + '...'
+      if (title1.length > 5) {
+        title1 = title1.substring(0, 5) + '...'
       }
       var result = {
         title: title1,
@@ -84,9 +94,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
-
+  //  input聚焦
+  onBindFocus: function () {
+    this.setData({
+      containerShow: false,
+      searBtnShow: true
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

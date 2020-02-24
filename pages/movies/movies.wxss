@@ -1,9 +1,35 @@
 /* pages/movie/movie.wxss */
 @import "/pages/movies/movie-list/movie-list-template.wxss"; /* 引号必须加 */
+@import "/pages/movies/movie-grid/movie-grid.wxss";
 .container {
   background: #f2f2f2;
+}
+.search {
+  background-color: #f2f2f2;
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.search input {
+  height: 100%;
+  width: 600rpx;
+  margin-left: 20px;
+  font-size: 28rpx;
 }
 .movie-template {
   background: #ffff;
   margin-bottom: 30rpx;
+}
+.search-img {
+  margin: auto 0 auto 20rpx;
+}
+.placetor {
+  font-size: 14px;
+  color: #d1d1d1;
+  margin-left: 20rpx;
+}
+.search-btn {
+  position: absolute;
+  top: 80rpx;
 }

@@ -1,7 +1,17 @@
 <!--pages/movie/movie.wxml-->
+<import src="../movies/movie-grid/movie-grid.wxml" />
 <import src="/pages/movies/movie-list/movie-list-template.wxml" />
-<view>
+<view class="search">
+  <icon class="search-img" type="search" size="13" color="#405f80"></icon>
+  <input value="{{movieName}}" bindfocus="onBindFocus" bindblur="onBindBlur"  placeholder="战神纪、木偶玩家" placeholder-class="placetor"/>
+  <icon catchtap="closeSearch" wx:if="{{searBtnShow}}" class="search-img" size="13" color="#405f80" type="clear"></icon>
+</view>
+<view wx:if="{{containerShow}}">
 	<template is="movie-list" data="{{...inTheaters}}"></template>
   <template is="movie-list" data="{{...comingSoon}}"></template>
   <template is="movie-list" data="{{...top250}}"></template>
+</view>
+<!--pages/movies/more-movie/more-movie.wxml-->
+<view class="search-btn" wx:if="{{searBtnShow}}">
+  <template is="movie-grid-template" data="{{movies}}"></template>
 </view>

@@ -8,7 +8,6 @@ Page({
    */
   data: {
     totalCount: 0,
-    isEmpty: false,
     movies: []
   },
 
@@ -80,15 +79,7 @@ Page({
     }
     var totalMovies = this.data.movies
     let totalCount = this.data.totalCount
-    if(this.data.isEmpty) {
-      totalMovies = totalMovies.concat(movies)
-    } else {
-      totalMovies = movies
-      this.setData({
-        isEmpty: true
-      })
-    }
-    // this.setData(dataList) //相当于平铺这个对象
+    totalMovies = totalMovies.concat(movies)
     this.setData({
       movies: totalMovies,
       totalCount: totalCount + 20
@@ -107,21 +98,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onReachBottom: function (event) {
-    this.setData({
-      isEmpty: true,
-      movies: []
-    })
-    var refresUrl = this.data.requestUrl + "?star=0cunt=20"
-    utils.http(refresUrl, "GET", this.processDoubanData)
+    console.log('触发下拉')
+    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    utils.http(nextUrl, "GET", this.processDoubanData)
+    wx.showNavigationBarLoading() //加载lading 在导航栏
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onPullDownRefresh: function () {
-    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
-    utils.http(nextUrl, "GET", this.processDoubanData)
-    wx.showNavigationBarLoading() //加载lading 在导航栏
+    console.log('触发上拉')
+    this.setData({
+      totalCount: 0,
+      movies: []
+    })
+    var refresUrl = this.data.requestUrl + "?star=0cunt=20"
+    utils.http(refresUrl, "GET", this.processDoubanData)
   },
 
   /**
