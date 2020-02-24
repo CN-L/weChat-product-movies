@@ -1,7 +1,7 @@
 <import src="../movie/movie-template.wxml" />
 <template name="movie-grid-template">
 <!-- 一定要加固定高度 -->
-	<scroll-view class="seemore" scroll-y="{{true}}" bindscrolltolower="onScrollLower">
+	<!-- <scroll-view class="seemore" scroll-y="{{true}}" bindscrolltolower="onScrollLower"> -->
 		<view class="moreMovie">
 			<block wx:for="{{movies}}" wx:key="index">
 				<view>
@@ -11,7 +11,7 @@
 		</view>
 
 
-	</scroll-view>
+	<!-- </scroll-view> -->
 
 
 

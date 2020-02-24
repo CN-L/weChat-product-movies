@@ -53,11 +53,6 @@ Page({
   onShow: function () {
     console.log('onShow')
   },
-  onScrollLower: function () {
-    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
-    utils.http(nextUrl, "GET", this.processDoubanData)
-    wx.showNavigationBarLoading() //加载lading 在导航栏
-  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -84,14 +79,22 @@ Page({
       movies.push(result) //数据
     }
     var totalMovies = this.data.movies
-    totalMovies = totalMovies.concat(movies)
     let totalCount = this.data.totalCount
+    if(this.data.isEmpty) {
+      totalMovies = totalMovies.concat(movies)
+    } else {
+      totalMovies = movies
+      this.setData({
+        isEmpty: true
+      })
+    }
     // this.setData(dataList) //相当于平铺这个对象
     this.setData({
       movies: totalMovies,
       totalCount: totalCount + 20
     })
     wx.hideNavigationBarLoading()
+    wx.stopPullDownRefresh()
   },
   /**
    * 生命周期函数--监听页面卸载
@@ -103,15 +106,22 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onReachBottom: function (event) {
+    this.setData({
+      isEmpty: true,
+      movies: []
+    })
+    var refresUrl = this.data.requestUrl + "?star=0cunt=20"
+    utils.http(refresUrl, "GET", this.processDoubanData)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onPullDownRefresh: function () {
+    var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
+    utils.http(nextUrl, "GET", this.processDoubanData)
+    wx.showNavigationBarLoading() //加载lading 在导航栏
   },
 
   /**

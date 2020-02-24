@@ -1,5 +1,5 @@
 {
   "usingComponents": {},
-  "enablePullDownRefresh": false,
-  "navigationBarTitleText": "光与影"
+  "navigationBarTitleText": "光与影",
+  "enablePullDownRefresh": true
 }
