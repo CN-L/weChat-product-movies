@@ -4,7 +4,7 @@
 <view class="search">
   <icon class="search-img" type="search" size="13" color="#405f80"></icon>
   <input value="{{movieName}}" bindfocus="onBindFocus" bindblur="onBindBlur"  placeholder="战神纪、木偶玩家" placeholder-class="placetor"/>
-  <icon catchtap="closeSearch" wx:if="{{searBtnShow}}" class="search-img" size="13" color="#405f80" type="clear"></icon>
+  <icon catchtap="closeSearch" wx:if="{{searBtnShow}}" confirm-type="search" class="search-img" size="13" color="#405f80" type="clear"></icon>
 </view>
 <view wx:if="{{containerShow}}">
 	<template is="movie-list" data="{{...inTheaters}}"></template>
@@ -13,5 +13,5 @@
 </view>
 <!--pages/movies/more-movie/more-movie.wxml-->
 <view class="search-btn" wx:if="{{searBtnShow}}">
-  <template is="movie-grid-template" data="{{movies}}"></template>
+  <template is="movie-grid-template" data="{{...searchList}}"></template>
 </view>

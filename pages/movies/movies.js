@@ -10,6 +10,7 @@ Page({
     inTheaters: {},
     movieName: '',
     comingSoon: {},
+    searchList: {},
     containerShow: true,
     searBtnShow: false,
     top250: {}
@@ -24,10 +25,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-
   //  关闭搜索
   closeSearch: function() {
     this.setData({
+      searchList: {},
       containerShow: true,
       searBtnShow: false
     })
@@ -56,7 +57,6 @@ Page({
   },
   // 请求结果处理
   processDoubanData: function (movieList, keySet, sortTitle) {
-    console.log(keySet)
     var movies = []
     var dataList = {}
     for (var idx in movieList.subjects) {
@@ -123,7 +123,13 @@ Page({
   onPullDownRefresh: function () {
 
   },
-
+  // 失去焦点
+  onBindBlur:function(event) {
+    var text = event.detail.value
+    console.log(text)
+    var searchUrl = app.globalData.doubanBase + "v2/movie/search?q=" + text
+    this.movieListGet(searchUrl, "searchList", "")
+  },
   /**
    * 页面上拉触底事件的处理函数
    */

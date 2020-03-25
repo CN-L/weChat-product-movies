@@ -30,6 +30,10 @@ function startArry(stars) {
 }
 
 function http(url, method, callBack) {
+ let promise = new Promise((resolve, reject) => {
+  if(!method) {
+    method = "GET"
+  }
   wx.request({
     url: url,
     data: {},
@@ -38,12 +42,16 @@ function http(url, method, callBack) {
       "Content-Type": "application/json"
     },
     success: function (res) {
-      callBack(res.data)
+      resolve(res.data)
     },
     fail: function (error) {
-      console.log(error)
+      wx.showToast({
+        title: error,
+      })
     }
   })
+ })
+ return promise
 }
 module.exports = {
   formatTime: formatTime,

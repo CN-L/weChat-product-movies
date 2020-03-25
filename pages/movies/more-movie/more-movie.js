@@ -34,7 +34,9 @@ Page({
     this.setData({
       requestUrl: url
     })
-    utils.http(url, "GET", this.processDoubanData)
+    utils.http(url, "GET").then(res => {
+      this.processDoubanData(res)
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -100,7 +102,9 @@ Page({
   onReachBottom: function (event) {
     console.log('触发下拉')
     var nextUrl = this.data.requestUrl + "?start=" + this.data.totalCount + "&count=20";
-    utils.http(nextUrl, "GET", this.processDoubanData)
+    utils.http(nextUrl, "GET").then(res => {
+      this.processDoubanData(res)
+    })
     wx.showNavigationBarLoading() //加载lading 在导航栏
   },
 
@@ -114,7 +118,11 @@ Page({
       movies: []
     })
     var refresUrl = this.data.requestUrl + "?star=0cunt=20"
-    utils.http(refresUrl, "GET", this.processDoubanData)
+    
+    utils.http(refresUrl, "GET").then((res)=>{
+      console.log(res, 'fan')
+      this.processDoubanData(res)
+    })
   },
 
   /**
